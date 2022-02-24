@@ -169,7 +169,4 @@ export default {
 </script>
 
 <style>
-.nuxt-link-exact-active{
-
-}
 </style>

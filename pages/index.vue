@@ -1,9 +1,14 @@
 <template>
-  <Tutorial/>
+  <dashboard />
 </template>
 
 <script>
+import dashboard from './dashboard.vue';
 export default {
-  name: 'IndexPage'
-}
+  components: { dashboard },
+  name: "IndexPage",
+  data() {
+    return {};
+  },
+};
 </script>

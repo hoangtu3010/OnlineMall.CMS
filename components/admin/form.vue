@@ -4,7 +4,7 @@
         <div>
             Back to list
         </div>
-        <h4>Add new Admin</h4>
+        <h4>Add new User</h4>
     </div>
     <hr />
     <div style="padding: 20px 0">

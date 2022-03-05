@@ -1,14 +1,73 @@
 <template>
-  <category-form :id="id" />
+  <div class="form-horizontal">
+    <div class="tag-header">
+      <div>Back to list</div>
+      <h4>Add new Category</h4>
+    </div>
+    <hr />
+    <div style="padding: 20px 0">
+      <div class="form-group">
+        <input
+          v-model="data.name"
+          type="text"
+          class="form-control"
+          placeholder=" "
+        />
+        <label for="" class="form-label">Name</label>
+      </div>
+
+      
+
+      <div class="form-group">
+        <div class="button-form">
+          <nuxt-link to="/category">
+            <button @click="addOrUpdate" type="submit" class="btn">update</button>
+          </nuxt-link>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      id: parseInt(this.$route.params.id)
+      id:0,
+      data:{
+        id:'',
+        name:''
+      },
+      
     };
   },
+  created(){
+    this.id= parseInt(this.$route.params.id)
+    this.getByIdCategory(this.id)
+  },
+  methods:{
+    getByIdCategory(id){
+      this.$axios.get("/api/Categories/GetCategory/" + id).then((res) => {
+        this.data = res.data;
+      });
+    },
+    addOrUpdate(){
+      this.$axios.put("/api/Categories/PutCategory/"+this.id,this.data).then((response) => {
+           this.getData()
+        });
+    },
+    getData() {
+      this.$axios
+        .get(this.$api.CATEGORIES_GET_ALL)
+        .then((res) => {
+          return this.listData = res.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+
+  }
 };
 </script>
 

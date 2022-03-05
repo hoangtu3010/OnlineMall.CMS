@@ -84,25 +84,86 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    href="/Admin/Types"
+                  <nuxt-link
+                    to="/category"
                     class="nav-link nav-item-sidebar"
                     style="padding: 0.8rem 1rem"
                   >
                     <i class="nav-icon fas fa-stream"></i>
-                    <p>Type</p>
-                  </a>
+                    <p>Category</p>
+                  </nuxt-link>
                 </li>
-                <li class="nav-item">
-                  <nuxt-link to="/Admin/Status" class="nav-link nav-item-sidebar">
-                    <i class="nav-icon ion-ios-pricetags-outline"></i>
-                    <p>Status</p>
+                 <li class="nav-item">
+                  <nuxt-link
+                    to="/products"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Product</p>
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
-                  <nuxt-link to="#" class="nav-link nav-item-sidebar">
+                  <nuxt-link
+                    to="/department"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Departerment</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link
+                    to="/shops"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Shop</p>
+                  </nuxt-link>
+                </li>
+                 <li class="nav-item">
+                  <nuxt-link
+                    to="/movies"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Movies</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link
+                    to="/movieToday"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Movies today</p>
+                  </nuxt-link>
+                </li>
+                 
+                 <li class="nav-item">
+                  <nuxt-link
+                    to="/seats"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-stream"></i>
+                    <p>Seats</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link to="/feedback" class="nav-link nav-item-sidebar">
+                    <i class="nav-icon ion-ios-pricetags-outline"></i>
+                    <p>Feedbacks</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link to="/genre"   class="nav-link nav-item-sidebar">
                     <i class="nav-icon ion-help"></i>
-                    <p>Help</p>
+                    <p>Genres</p>
                   </nuxt-link>
                 </li>
                 <li class="nav-item">

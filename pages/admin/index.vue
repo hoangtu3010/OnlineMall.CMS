@@ -21,14 +21,14 @@
           <td>{{e.name}}</td>
           <td>{{e.email}}</td>
           <td class="text-center">
-            <nuxt-link to="/admin/1" class="button-action btn-edit">
-              <i class="fas fa-pen"></i>
+            <nuxt-link :to="'/admin/'+e.id" class="button-action btn-edit">
+              <i @click="editUser(e.id)" class="fas fa-pen"></i>
             </nuxt-link>
-            <nuxt-link to="/admin/1" class="button-action btn-details">
+            <nuxt-link to="/admin/" class="button-action btn-details">
               <i class="fas fa-eye"></i>
             </nuxt-link>
-            <nuxt-link to="/admin/1" class="button-action btn-delete">
-              <i class="fas fa-trash"></i>
+            <nuxt-link  to="/admin" class="button-action btn-delete">
+              <i @click="deleteUser(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
         </tr>
@@ -56,9 +56,17 @@ export default {
           return this.listData = res.data;
         })
         .catch((e) => {
-          console.log(e);
         });
     },
+    deleteUser(id){
+      this.$axios.delete("/api/Users/DeleteUser/"+ id ).then(response=>{
+        this.getData()
+       
+      })
+    },
+    editUser(id){
+      this.$emit("edit",id)
+    }
   },
 };
 </script>

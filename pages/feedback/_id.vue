@@ -36,7 +36,7 @@
       <div class="form-group">
         <div class="button-form">
           <nuxt-link to="/feedback">
-            <button @click="addOrUpdate" type="submit" class="btn">Add</button>
+            <button @click="addOrUpdate" class="btn">Add</button>
           </nuxt-link>
         </div>
       </div>

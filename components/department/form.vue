@@ -22,7 +22,6 @@
           <nuxt-link to="/department">
             <button
               @click="updateDepartment"
-              type="submit"
               v-if="this.id"
               class="btn"
             >
@@ -30,7 +29,6 @@
             </button>
             <button
               @click="addDepartment"
-              type="submit"
               v-if="!this.id"
               class="btn"
             >

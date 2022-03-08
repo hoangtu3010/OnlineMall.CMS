@@ -102,11 +102,6 @@ export default {
       },
     };
   },
-  setup(){
-    return{
-      values: ref(this.moviesData),
-    }
-  },
   mounted() {
   },
   created() {

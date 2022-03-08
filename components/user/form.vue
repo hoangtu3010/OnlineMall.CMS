@@ -5,7 +5,7 @@
       <h4>Add new User</h4>
     </div>
     <hr />
-    <form class="needs-validation" style="padding: 20px 0" novalidate>
+    <div class="needs-validation" style="padding: 20px 0" novalidate>
       <div class="form-group">
         <input
           v-model="userData.name"
@@ -47,19 +47,18 @@
           <nuxt-link to="/user">
             <button
               @click="updateUser"
-              type="submit"
               v-if="this.id"
               class="btn"
             >
               Save
             </button>
-            <button @click="addUser" type="submit" v-if="!this.id" class="btn">
+            <button @click="addUser"  v-if="!this.id" class="btn">
               Add
             </button>
           </nuxt-link>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 

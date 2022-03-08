@@ -22,7 +22,6 @@
           <nuxt-link to="/category">
             <button
               @click="updateCategories"
-              type="submit"
               v-if="this.id"
               class="btn"
             >
@@ -30,7 +29,6 @@
             </button>
             <button
               @click="addCategories"
-              type="submit"
               v-if="!this.id"
               class="btn"
             >

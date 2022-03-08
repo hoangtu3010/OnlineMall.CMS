@@ -17,9 +17,7 @@
           <th>ShowTime</th>
           <th>Link</th>
           <th>Description</th>
-          <th>DepartmentId</th>
-
-         
+          <th>Department</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>
@@ -27,13 +25,13 @@
         <tr v-for="e in listData" :key="e.id">
           <td class="text-center">{{e.id}}</td>
           <td>{{e.name}}</td>
-          <td>{{e.image}}</td>
-          <td>{{e.logo}}</td>
+          <td><img :src="e.imageSrc" alt="image" width="60"></td>
+          <td><img :src="e.imageLogoSrc" alt="image" width="60"></td>
           <td>{{e.contact}}</td>
-          <td>{{e.showTime}}</td>
+          <td>{{ formatDate(e.showTime,'HH:mm') }}</td>
           <td>{{e.link}}</td>
           <td>{{e.description}}</td>
-          <td>{{e.departmentId}}</td>
+          <td><span v-if="e.department">{{e.department.name}}</span></td>
 
 
           <td class="text-center">
@@ -58,21 +56,30 @@ export default {
   },
   data(){
     return{
-      listData:{}
     }
+  },
+    computed: {
+    listData() {
+      return this.$store.state.shops.listData;
+    },
   },
   methods:{
     getData(){
-       this.$axios
-        .get(this.$api.SHOPS_GET_ALL)
+             this.$store.dispatch("shops/getListShops");
+    },
+     deleteProducts(id) {
+      this.$store
+        .dispatch("shops/removeShops", id)
         .then((res) => {
-          console.log(res.data)
-          return this.listData = res.data;
+          this.$toast.success("Delete Success");
         })
-        .catch((e) => {
-          console.log(e);
+        .catch((res) => {
+          this.$toast.error("Delete Failed");
         });
-    }
+      setTimeout(() => {
+        location.reload();
+      }, 200);
+    },
   }
 
 

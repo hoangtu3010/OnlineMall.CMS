@@ -26,7 +26,7 @@
                 aria-label="Search"
               />
               <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
+                <button class="btn btn-navbar">
                   <i class="fas fa-search"></i>
                 </button>
                 <button

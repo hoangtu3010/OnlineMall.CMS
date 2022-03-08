@@ -2,7 +2,7 @@
   <div class="data-list table-style">
     <div class="cart-header">
       <h2>Movies Today</h2>
-      <nuxt-link :to="'/movieToday/'+0" class="button-action-add">
+      <nuxt-link :to="'/movieToday/' + 0" class="button-action-add">
         <i class="fas fa-plus"></i>
       </nuxt-link>
     </div>
@@ -22,8 +22,8 @@
           <td>
             {{ e.movies.name }}
           </td>
-          <td>{{ e.showDate }}</td>
-          <td>{{ e.showTime }}</td>
+          <td>{{ formatDate(e.showDate) }}</td>
+          <td>{{ formatDate(e.showTime,'HH:mm') }}</td>
           <td class="text-center">
             <nuxt-link
               :to="'/movieToday/' + e.id"
@@ -44,42 +44,32 @@
 export default {
   data() {
     return {
-      listData: [],
-      listMove: [],
     };
   },
   created() {
     this.getData();
-    this.getDataMovie();
+  },
+  computed: {
+    listData() {
+      return this.$store.state.movieToday.listData;
+    },
   },
   methods: {
     getData() {
-      this.$axios
-        .get(this.$api.MOVIETODAY_GET_ALL)
-        .then((res) => {
-          console.log(res.data)
-          return (this.listData = res.data);
-          
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    
-    getDataMovie() {
-      this.$axios
-        .get(this.$api.MOVIES_GET_ALL)
-        .then((res) => {
-          this.listMove = res.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      this.$store.dispatch("movieToday/getListMovieToday");
     },
     deletemovieToday(id) {
-      this.$axios
-        .get("/api/MoviesTodays/DeleteMoviesToday/" + id)
-        .then((response) => {});
+      this.$store
+        .dispatch("movieToday/removeMovieToday", id)
+        .then((res) => {
+          this.$toast.success("Delete Success");
+        })
+        .catch((res) => {
+          this.$toast.error("Delete Failed");
+        });
+      setTimeout(() => {
+        location.reload();
+      }, 200);
     },
   },
 };

@@ -22,13 +22,12 @@
           <nuxt-link to="/genre">
             <button
               @click="updateGenre"
-              type="submit"
               v-if="this.id"
               class="btn"
             >
               Save
             </button>
-            <button @click="addGenre" type="submit" v-if="!this.id" class="btn">
+            <button @click="addGenre" v-if="!this.id" class="btn">
               Add
             </button>
           </nuxt-link>

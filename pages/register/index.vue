@@ -60,7 +60,6 @@
           <button
             @click="register"
             class="btn btn-primary"
-            type="submit"
           >
             Register
           </button>

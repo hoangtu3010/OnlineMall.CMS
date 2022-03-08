@@ -12,10 +12,8 @@
           <th class="text-center">Id</th>
           <th>Name</th>
           <th>Price</th>
-          <th>RateStar</th>
           <th>Description</th>
           <th>Image</th>
-          <th>Quantily</th>
           <th>Category</th>
 
           <th class="text-center">Action</th>
@@ -26,10 +24,8 @@
           <td class="text-center">{{ e.id }}</td>
           <td>{{ e.name }}</td>
           <td>{{ e.price }}</td>
-          <td>{{ e.rateStar }}</td>
           <td>{{ e.description }}</td>
           <td>{{ e.image }}</td>
-          <td>{{ e.quantily }}</td>
           <td>{{ e.category.name }}</td>
 
           <td class="text-center">
@@ -53,27 +49,32 @@
 export default {
   created() {
     this.getData();
+    console.log(this.listData)
   },
   data() {
-    return {
-      listData: [],
-    };
+    return {};
+  },
+  computed: {
+    listData() {
+      return this.$store.state.products.listData;
+    },
   },
   methods: {
     getData() {
-      this.$axios
-        .get(this.$api.PRODUCTS_GET_ALL)
-        .then((res) => {
-          this.listData = res.data
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      this.$store.dispatch("products/getListProducts");
     },
     deleteProducts(id) {
-      this.$axios
-        .get("/api​/Products​/DeleteProduct​/" + id)
-        .then((response) => {this.getData()});
+      this.$store
+        .dispatch("products/removeProducts", id)
+        .then((res) => {
+          this.$toast.success("Delete Success");
+        })
+        .catch((res) => {
+          this.$toast.error("Delete Failed");
+        });
+      setTimeout(() => {
+        location.reload();
+      }, 200);
     },
   },
 };

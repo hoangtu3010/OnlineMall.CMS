@@ -2,7 +2,7 @@
   <div class="data-list table-style">
     <div class="cart-header">
       <h2>Genres</h2>
-      <nuxt-link :to="'/genre/' + 0" class="button-action-add">
+      <nuxt-link to="/genre/create" class="button-action-add">
         <i class="fas fa-plus"></i>
       </nuxt-link>
     </div>

@@ -93,8 +93,8 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        baseURL: "https://localhost:44325",
-        browserBaseUrl: "https://localhost:44325",
+        baseURL: "https://localhost:5001",
+        browserBaseUrl: "https://localhost:5001",
         proxyHeaders: false,
         credentials: false,
     },

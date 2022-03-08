@@ -1,6 +1,7 @@
 <template>
   <div class="data-list table-style">
     <div class="cart-header">
+      <h2>Movies Today</h2>
       <nuxt-link :to="'/movieToday/'+0" class="button-action-add">
         <i class="fas fa-plus"></i>
       </nuxt-link>

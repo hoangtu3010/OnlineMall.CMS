@@ -27,10 +27,14 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Monoton&display=swap",
         rel: "stylesheet",
       },
-      {rel:"stylesheet", href:"https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"}
+      {
+        rel: "stylesheet",
+        href: "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css",
+      },
     ],
     script: [
       { src: "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js" },
+      // { src: "https://checkout.razorpay.com/v1/checkout.js" },
     ],
   },
 
@@ -51,13 +55,13 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/api", "@/plugins/mixins/common"],
+  plugins: ["@/plugins/api", "@/plugins/mixins/common", "@/plugins/Vuelidate"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ["@nuxtjs/dotenv"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -65,33 +69,95 @@ export default {
     "bootstrap-vue/nuxt",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    "@nuxtjs/auth",
+    "@nuxtjs/toast",
   ],
+
+  bootstrapVue: {
+    icons: true,
+  },
+
+  toast: {
+    position: "top-center",
+    // register: [
+    //   // Register custom toasts
+    //   {
+    //     name: "my-error",
+    //     message: "Oops...Something went wrong",
+    //     options: {
+    //       type: "error",
+    //     },
+    //   },
+    // ],
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: "https://localhost:44325",
     browserBaseUrl: "https://localhost:44325",
+    proxyHeaders: false,
+    credentials: false,
   },
+
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: "/api/AuthManagerment/Login",
+  //           method: "post",
+  //           propertyName: "token",
+  //         },
+  //         user: {
+  //           url: '/api/Users/GetUsers',
+  //           method: 'get',
+  //           propertyName: 'users'
+  //         },
+  //         tokenRequired: true,
+  //         logout: false,
+  //       },
+  //     },
+  //     watchLoggedIn: true,
+  //     redirect: {
+  //       login: "/login",
+  //       logout: "/",
+  //       callback: "/login",
+  //       home: "/",
+  //     },
+  //   },
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     vendor: [
-      '~/assets/adminLTE/plugins/jquery/jquery.min.js',
-      '~/assets/adminLTE/plugins/jquery-ui/jquery-ui.min.js',
-      '~/assets/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js',
-      '~/assets/adminLTE/plugins/chart.js/Chart.min.js',
-      '~/assets/adminLTE/plugins/sparklines/sparkline.js',
-      '~/assets/adminLTE/plugins/jqvmap/jquery.vmap.min.js',
-      '~/assets/adminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js',
-      '~/assets/adminLTE/plugins/jquery-knob/jquery.knob.min.js',
-      '~/assets/adminLTE/plugins/moment/moment.min.js',
-      '~/assets/adminLTE/plugins/daterangepicker/daterangepicker.js',
-      '~/assets/adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
-      '~/assets/adminLTE/plugins/summernote/summernote-bs4.min.js',
-      '~/assets/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js',
-      '~/assets/adminLTE/dist/js/adminlte.js',
-      '~/assets/adminLTE/dist/js/demo.js',
-      '~/assets/adminLTE/dist/js/pages/dashboard.js',
+      "~/assets/adminLTE/plugins/jquery/jquery.min.js",
+      "~/assets/adminLTE/plugins/jquery-ui/jquery-ui.min.js",
+      "~/assets/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js",
+      "~/assets/adminLTE/plugins/chart.js/Chart.min.js",
+      "~/assets/adminLTE/plugins/sparklines/sparkline.js",
+      "~/assets/adminLTE/plugins/jqvmap/jquery.vmap.min.js",
+      "~/assets/adminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js",
+      "~/assets/adminLTE/plugins/jquery-knob/jquery.knob.min.js",
+      "~/assets/adminLTE/plugins/moment/moment.min.js",
+      "~/assets/adminLTE/plugins/daterangepicker/daterangepicker.js",
+      "~/assets/adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+      "~/assets/adminLTE/plugins/summernote/summernote-bs4.min.js",
+      "~/assets/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+      "~/assets/adminLTE/dist/js/adminlte.js",
+      "~/assets/adminLTE/dist/js/demo.js",
+      "~/assets/adminLTE/dist/js/pages/dashboard.js",
     ],
+  },
+
+  router: {
+    // middleware: ['auth'],
+    base: "/admin/",
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: "custom",
+        path: "*",
+        component: resolve(__dirname, "pages/404.vue"),
+      });
+    },
   },
 };

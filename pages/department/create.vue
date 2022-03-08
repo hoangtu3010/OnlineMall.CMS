@@ -1,68 +1,16 @@
 <template>
-  <div class="form-horizontal">
-    <div class="tag-header">
-      <div>Back to list</div>
-      <h4>Add new Department</h4>
-    </div>
-    <hr />
-    <div style="padding: 20px 0">
-      <div class="form-group">
-        <input
-          v-model="data.name"
-          type="text"
-          class="form-control"
-          placeholder=" "
-        />
-        <label for="" class="form-label">Name Department</label>
-      </div>
-
-      <div class="form-group">
-        <div class="button-form">
-        
-            <button @click="addOrUpdate" type="submit" class="btn">Add</button>
-        
-        </div>
-      </div>
-    </div>
-  </div>
+  <department-form />
 </template>
 
 <script>
 export default {
   data() {
     return {
-      data:{
-        id:'',
-        name:'',
-        
-      }
-    }
-        
+    };
   },
-  methods:{
-    addOrUpdate(){
-      this.$axios
-          .post(this.$api.DEPARTMENTS_CREATE, {
-            name: this.data.name,
-          })
-          .then((response) => {
-
-            this.getData()
-            this.$router.push('/department')
-          })
-          .catch((e) => {});
-    },
-    getData() {
-      this.$axios
-        .get(this.$api.DEPARTMENTS_GET_ALL)
-        .then((res) => {
-          return this.listData = res.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-  }
+  mounted() {},
+  created() {
+  },
 };
 </script>
 

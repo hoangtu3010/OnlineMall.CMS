@@ -19,7 +19,7 @@
       <section-sidebar-section />
 
       <div class="content-wrapper" style="padding: 20px">
-        <Nuxt/>
+        <Nuxt />
       </div>
 
       <footer class="main-footer">
@@ -50,50 +50,35 @@
 </template>
 
 <script>
-import HeaderSection from '~/components/section/header-section.vue';
-import SidebarSection from '~/components/section/sidebar-section.vue';
+import HeaderSection from "~/components/section/header-section.vue";
+import SidebarSection from "~/components/section/sidebar-section.vue";
 export default {
   components: { SidebarSection, HeaderSection },
   data() {
     return {};
   },
   mounted() {
-    document.querySelector('body').className = 'sidebar-mini layout-fixed sidebar-closed sidebar-collapse'
+    document.querySelector("body").className =
+      "sidebar-mini layout-fixed sidebar-closed sidebar-collapse";
 
     $(window).on("load", function () {
       $(".loader-wrapper").fadeOut("slow");
     });
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $("#img_tag").attr("src", e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#inputImage").change(function () {
-      readURL(this);
-    });
-    (function () {
-      "use strict";
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll(".needs-validation");
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener(
-          "submit",
-          function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
-    })();
+
+    // function readURL(input) {
+    //   if (input.files && input.files[0]) {
+    //     var reader = new FileReader();
+    //     reader.onload = function (e) {
+    //       $("#img_tag").attr("src", e.target.result);
+    //     };
+    //     reader.readAsDataURL(input.files[0]);
+    //   }
+    // }
+    // $(".input-image").change(function () {
+    //   setTimeout(() => {
+    //     readURL(this);
+    //   });
+    // });
   },
   created() {},
   watch: {},

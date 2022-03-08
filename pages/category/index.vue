@@ -9,24 +9,24 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th class="text-center">Idd</th>
-          <th>Name Category</th>
+          <th class="text-center">Id</th>
+          <th>Name</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="e in listData" :key="e.id">
-          <td class="text-center">{{e.id}}</td>
-          <td>{{e.name}}</td>
+          <td class="text-center">{{ e.id }}</td>
+          <td>{{ e.name }}</td>
           <td class="text-center">
-            <nuxt-link :to="'/category/'+e.id" class="button-action btn-edit">
-              <i @click="editUser(e.id)" class="fas fa-pen"></i>
+            <nuxt-link :to="'/category/' + e.id" class="button-action btn-edit">
+              <i class="fas fa-pen"></i>
             </nuxt-link>
-            <nuxt-link to="/admin/" class="button-action btn-details">
+            <nuxt-link to="/category" class="button-action btn-details">
               <i class="fas fa-eye"></i>
             </nuxt-link>
-            <nuxt-link  to="/admin" class="button-action btn-delete">
-              <i @click="deleteUser(e.id)" class="fas fa-trash"></i>
+            <nuxt-link to="/category" class="button-action btn-delete">
+              <i @click="removeCategories(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
         </tr>
@@ -37,23 +37,32 @@
 <script>
 export default {
   data() {
-    return {
-      listData: [],
-    };
+    return {};
   },
   created() {
     this.getData();
   },
+  computed: {
+    listData() {
+      return this.$store.state.category.listCategories;
+    },
+  },
   methods: {
     getData() {
-      this.$axios
-        .get(this.$api.CATEGORIES_GET_ALL)
+      this.$store.dispatch("category/getListCategories");
+    },
+    removeCategories(id) {
+      this.$store
+        .dispatch("category/removeCategories", id)
         .then((res) => {
-          return this.listData = res.data;
+          this.$toast.success("Delete Success");
         })
-        .catch((e) => {
-          console.log(e);
+        .catch((res) => {
+          this.$toast.error("Delete Failed");
         });
+      setTimeout(() => {
+        location.reload();
+      }, 200);
     },
   },
 };

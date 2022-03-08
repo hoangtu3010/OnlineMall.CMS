@@ -1,6 +1,6 @@
 
 <template>
-   <div class="data-list table-style">
+  <div class="data-list table-style">
     <div class="cart-header">
       <h2>Departerments</h2>
       <nuxt-link to="/department/create" class="button-action-add">
@@ -11,22 +11,25 @@
       <thead>
         <tr>
           <th class="text-center">Id</th>
-          <th>Name </th>
-         
+          <th>Name</th>
+
           <th class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="e in listData" :key="e.id">
-          <td class="text-center">{{e.id}}</td>
-          <td>{{e.name}}</td>
+          <td class="text-center">{{ e.id }}</td>
+          <td>{{ e.name }}</td>
           <td class="text-center">
-            <nuxt-link :to="'/department/'+e.id" class="button-action btn-edit">
+            <nuxt-link
+              :to="'/department/' + e.id"
+              class="button-action btn-edit"
+            >
               <i @click="editUser(e.id)" class="fas fa-pen"></i>
             </nuxt-link>
-         
-            <nuxt-link  to="/department" class="button-action btn-delete">
-              <i @click="deleteUser(e.id)" class="fas fa-trash"></i>
+
+            <nuxt-link to="/department" class="button-action btn-delete">
+              <i @click="removeDepartment(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
         </tr>
@@ -37,37 +40,39 @@
 
 <script>
 export default {
-  created(){
-    this.getData()
+  data() {
+    return {};
   },
-data() {
-    return {
-      listData: [],
-    };
+  created() {
+    this.getData();
+  },
+  computed: {
+    listData() {
+      return this.$store.state.department.listDepartment;
+    },
   },
   methods: {
     getData() {
-      this.$axios
-        .get(this.$api.DEPARTMENTS_GET_ALL)
-        .then((res) => {
-          return this.listData = res.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      this.$store.dispatch("department/getListDepartment");
     },
-    deleteUser(id){
-      this.$axios.delete("/api/Departments/DeleteDepartment/"+id).then((res)=>{
-        this.getData()
-      })
-    }
+    removeDepartment(id) {
+      this.$store
+        .dispatch("department/removeDepartment", id)
+        .then((res) => {
+          this.$toast.success("Delete Success");
+        })
+        .catch((res) => {
+          this.$toast.error("Delete Failed");
+        });
+      setTimeout(() => {
+        location.reload();
+      }, 200);
+    },
   },
-}
+};
 </script>
 
 <style>
-
 </style>
 <style>
-
 </style>

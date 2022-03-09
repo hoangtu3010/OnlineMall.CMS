@@ -27,7 +27,7 @@
               <i class="fas fa-pen"></i>
             </nuxt-link>
             <nuxt-link to="/gallery" class="button-action btn-delete">
-              <i @click="removeMovies(e.id)" class="fas fa-trash"></i>
+              <i @click="removeGallery(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
         </tr>
@@ -46,14 +46,14 @@ export default {
   },
   computed: {
     listData() {
-      return this.$store.state.movies.listData;
+      return this.$store.state.gallery.listData;
     },
   },
   methods: {
     getData() {
       this.$store.dispatch("gallery/getListGallery");
     },
-    removeMovies(id) {
+    removeGallery(id) {
       this.$store
         .dispatch("gallery/removeGallery", id)
         .then((res) => {

@@ -71,7 +71,11 @@ export default {
         "@nuxtjs/axios",
         "@nuxtjs/auth",
         "@nuxtjs/toast",
+        'nuxt-highcharts',
     ],
+    highcharts: {
+        exporting: true,
+    },
 
     bootstrapVue: {
         icons: true,
@@ -99,33 +103,33 @@ export default {
         credentials: false,
     },
 
-    // auth: {
-    //   strategies: {
-    //     local: {
-    //       endpoints: {
-    //         login: {
-    //           url: "/api/AuthManagerment/Login",
-    //           method: "post",
-    //           propertyName: "token",
-    //         },
-    //         user: {
-    //           url: '/api/Users/GetUsers',
-    //           method: 'get',
-    //           propertyName: 'users'
-    //         },
-    //         tokenRequired: true,
-    //         logout: false,
-    //       },
-    //     },
-    //     watchLoggedIn: true,
-    //     redirect: {
-    //       login: "/login",
-    //       logout: "/",
-    //       callback: "/login",
-    //       home: "/",
-    //     },
-    //   },
-    // },
+    auth: {
+      strategies: {
+        local: {
+          endpoints: {
+            login: {
+              url: "/api/AuthManagerment/Login",
+              method: "post",
+              propertyName: "token",
+            },
+            user: {
+              url: '/api/Users/GetUsers',
+              method: 'get',
+              propertyName: 'users'
+            },
+            tokenRequired: true,
+            logout: false,
+          },
+        },
+        watchLoggedIn: true,
+        redirect: {
+          login: "/login",
+          logout: "/",
+          callback: "/login",
+          home: "/",
+        },
+      },
+    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {

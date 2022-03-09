@@ -12,65 +12,65 @@ export default {
   CINEMA_COLUMNS: [
     {
       value: 1,
-      text: "Khu A",
+      text: "Area A",
     },
     {
       value: 2,
-      text: "Khu B",
+      text: "Area B",
     },
     {
       value: 3,
-      text: "Khu C",
+      text: "Area C",
     },
     {
       value: 4,
-      text: "Khu D",
+      text: "Area D",
     },
     {
       value: 5,
-      text: "Khu E",
+      text: "Area E",
     },
   ],
   CINEMA_ROWS: [
     {
       value: 1,
-      text: "Hàng 1",
+      text: "row_of_seats 1",
     },
     {
       value: 2,
-      text: "Hàng 2",
+      text: "row_of_seats 2",
     },
     {
       value: 3,
-      text: "Hàng 3",
+      text: "row_of_seats 3",
     },
     {
       value: 4,
-      text: "Hàng 4",
+      text: "row_of_seats 4",
     },
     {
       value: 5,
-      text: "Hàng 5",
+      text: "row_of_seats 5",
     },
     {
       value: 6,
-      text: "Hàng 6",
+      text: "row_of_seats 6",
     },
     {
       value: 7,
-      text: "Hàng 7",
+      text: "row_of_seats 7",
     },
     {
       value: 8,
-      text: "Hàng 8",
+      text: "row_of_seats 8",
     },
     {
       value: 9,
-      text: "Hàng 9",
+      text: "row_of_seats 9",
     },
     {
       value: 10,
-      text: "Hàng 10",
+      text: "row_of_seats 10",
     },
   ],
 };

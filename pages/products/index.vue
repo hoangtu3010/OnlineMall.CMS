@@ -25,8 +25,7 @@
           <td>{{ e.name }}</td>
           <td>{{ e.price }}</td>
           <td>{{ e.description }}</td>
-          <td><img :src="e.imageSrc" alt="image" width="60" /></td>
-
+          <td><img :src="e.imageSrc" width="60" height="60" alt=""></td>
           <td>{{ e.category.name }}</td>
 
           <td class="text-center">

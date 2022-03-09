@@ -58,6 +58,9 @@ export default {
     this.getGenre();
   },
   methods: {
+    getData() {
+      this.$store.dispatch("genre/getListGenre");
+    },
     getGenre() {
       if (this.id) {
         this.$store.dispatch("genre/getDetailGenre", this.id).then((res) => {
@@ -69,7 +72,9 @@ export default {
     },
     addGenre() {
       this.$store.dispatch("genre/addGenre", this.genreData).then(res => {
-        this.$toast.success("Add Success")
+        this.$toast.success("Add Success"),
+        this.getData()
+        
       }).catch(res => {
         this.$toast.error('Add Failed')
       })
@@ -77,6 +82,7 @@ export default {
     updateGenre() {
       this.$store.dispatch("genre/updateGenre", this.genreData).then(res => {
         this.$toast.success("Update Success")
+        this.getData()
       }).catch(res => {
         this.$toast.error('Update Failed')
       });

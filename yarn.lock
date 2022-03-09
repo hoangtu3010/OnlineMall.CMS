@@ -942,6 +942,11 @@
   resolved "https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.2.tgz"
   integrity sha512-82cpyJyKRoQoRi+14ibCeGPu0CwypgtBAdBhq1WfvagpCZNKqwXbKwXllYSMG91DhmG4jt9gN8eP6lGOtozuaw==
 
+"@highcharts/map-collection@^1.1.3":
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/@highcharts/map-collection/-/map-collection-1.1.4.tgz"
+  integrity sha512-JzoBLWFJSjzjUV/m+eU2FbJBeQCfheyFJBUyQ9xyUhSs8yqUbE/JN0x9VZe7lDr71MfTO+bO50YpCrk5BTRCzA==
+
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.0.5"
   resolved "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.0.5.tgz"
@@ -1538,14 +1543,14 @@
 
 "@vuelidate/core@^2.0.0-alpha.34":
   version "2.0.0-alpha.34"
-  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.34.tgz#4a2ce2ae18c8ffadb76b296b2c7c0e10a2f48a37"
+  resolved "https://registry.npmjs.org/@vuelidate/core/-/core-2.0.0-alpha.34.tgz"
   integrity sha512-8SHViBA+bBaXGH8UwcdGG7vEQ8mG8rhtsddJiq9Abz9YvzWxFxd8spAhe9ggfCtyRuvwCCpPbxx63NOGThVZkQ==
   dependencies:
     vue-demi "^0.12.0"
 
 "@vuelidate/validators@^2.0.0-alpha.26":
   version "2.0.0-alpha.26"
-  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.0-alpha.26.tgz#dbea8d44b7607ac0b4dced36ea3e4641f1617942"
+  resolved "https://registry.npmjs.org/@vuelidate/validators/-/validators-2.0.0-alpha.26.tgz"
   integrity sha512-O53AU/dGMMOEPMC6bqhs9JvJAz03z0lLxIDq1tL8bWZylzRWeuF9a2sERxy82t2MnQ+ag15tUpTFpTbaYBm9tg==
   dependencies:
     vue-demi "^0.12.0"
@@ -4009,6 +4014,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
+highcharts@^9.3.0:
+  version "9.3.3"
+  resolved "https://registry.npmjs.org/highcharts/-/highcharts-9.3.3.tgz"
+  integrity sha512-QeOvm6cifeZYYdTLm4IxZsXcOE9c4xqfs0z0OJJ0z7hhA9WG0rmcVAyuIp5HBl/znjA/ayYHmpYjBYD/9PG4Fg==
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
@@ -5100,7 +5110,7 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
 
 moment@^2.29.1:
   version "2.29.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
 move-concurrently@^1.0.1:
@@ -5329,6 +5339,15 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
+
+nuxt-highcharts@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/nuxt-highcharts/-/nuxt-highcharts-2.0.3.tgz"
+  integrity sha512-vPNLplj31eprT7YfK/dOwbncNg5BUH3DaPsTfNOXWbfNOWaz6XXfbxRYadGP3+rLuNO1IHvBtSncj1wLzOzknA==
+  dependencies:
+    highcharts "^9.3.0"
+  optionalDependencies:
+    "@highcharts/map-collection" "^1.1.3"
 
 nuxt@^2.15.8:
   version "2.15.8"
@@ -7821,7 +7840,7 @@ vue-client-only@^2.0.0:
 
 vue-demi@^0.12.0:
   version "0.12.1"
-  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
+  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.12.1.tgz"
   integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
 
 vue-functional-data-merge@^3.1.0:
@@ -7909,7 +7928,7 @@ vue@^2.6.12, vue@^2.6.14:
 
 vuelidate@^0.7.7:
   version "0.7.7"
-  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.7.tgz#5df3930a63ddecf56fde7bdacea9dbaf0c9bf899"
+  resolved "https://registry.npmjs.org/vuelidate/-/vuelidate-0.7.7.tgz"
   integrity sha512-pT/U2lDI67wkIqI4tum7cMSIfGcAMfB+Phtqh2ttdXURwvHRBJEAQ0tVbUsW9Upg83Q5QH59bnCoXI7A9JDGnA==
 
 vuex@^3.6.2:

@@ -39,11 +39,11 @@ export default {
         return this.inputImg ? this.inputImg : "default.jpg";
       }
       if(this.textStr){
-         return this.moviesData.imageLogoSrc
+         return this.moviesData.imageLogoName
         ? this.moviesData.imageLogoSrc
         : "default.jpg";
       }
-      return this.moviesData.imageSrc
+      return this.moviesData.imageName
         ? this.moviesData.imageSrc
         : "default.jpg";
     },
@@ -57,7 +57,6 @@ export default {
       handler(value) {
         this.$emit("input", value);
         console.log("aa", value);
-        this.keyItem++;
       },
       deep: true,
     },

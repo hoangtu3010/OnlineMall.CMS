@@ -23,23 +23,36 @@
       </thead>
       <tbody>
         <tr v-for="e in listData" :key="e.id">
-          <td class="text-center">{{e.id}}</td>
-          <td>{{e.name}}</td>
-          <td><img :src="e.imageSrc" alt="image" width="60"></td>
-          <td><img :src="e.imageLogoSrc" alt="image" width="60"></td>
-          <td>{{e.contact}}</td>
-          <td>{{ formatDate(e.showTime,'HH:mm') }}</td>
-          <td>{{e.link}}</td>
-          <td>{{e.description}}</td>
-          <td><span v-if="e.department">{{e.department.name}}</span></td>
-
+          <td class="text-center">{{ e.id }}</td>
+          <td>{{ e.name }}</td>
+          <td>
+            <img
+              :src="e.imageName ? e.imageSrc : 'default.jpg'"
+              alt="image"
+              width="60"
+            />
+          </td>
+          <td>
+            <img
+              :src="e.imageLogoName ? e.imageLogoSrc : 'default.jpg'"
+              alt="image"
+              width="60"
+            />
+          </td>
+          <td>{{ e.contact }}</td>
+          <td>{{ formatDate(e.showTime, "HH:mm") }}</td>
+          <td>{{ e.link }}</td>
+          <td>{{ e.description }}</td>
+          <td>
+            <span v-if="e.department">{{ e.department.name }}</span>
+          </td>
 
           <td class="text-center">
-            <nuxt-link :to="'/shops/'+e.id" class="button-action btn-edit">
-              <i  class="fas fa-pen"></i>
+            <nuxt-link :to="'/shops/' + e.id" class="button-action btn-edit">
+              <i class="fas fa-pen"></i>
             </nuxt-link>
-         
-            <nuxt-link  to="/shops" class="button-action btn-delete">
+
+            <nuxt-link to="/shops" class="button-action btn-delete">
               <i @click="deleteProducts(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
@@ -51,28 +64,27 @@
 
 <script>
 export default {
-  created(){
-    this.getData()
+  created() {
+    this.getData();
   },
-  data(){
-    return{
-    }
+  data() {
+    return {};
   },
-    computed: {
+  computed: {
     listData() {
       return this.$store.state.shops.listData;
     },
   },
-  methods:{
-    getData(){
-             this.$store.dispatch("shops/getListShops");
+  methods: {
+    getData() {
+      this.$store.dispatch("shops/getListShops");
     },
-     deleteProducts(id) {
+    deleteProducts(id) {
       this.$store
         .dispatch("shops/removeShops", id)
         .then((res) => {
           this.$toast.success("Delete Success");
-          this.getData()
+          this.getData();
         })
         .catch((res) => {
           this.$toast.error("Delete Failed");
@@ -81,12 +93,9 @@ export default {
       //   location.reload();
       // }, 200);
     },
-  }
-
-
-}
+  },
+};
 </script>
 
 <style>
-
 </style>

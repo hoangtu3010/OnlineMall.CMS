@@ -23,7 +23,7 @@
       <tbody>
         <tr v-for="e in listData" :key="e.id">
           <td class="text-center">{{ e.id }}</td>
-          <td><img :src="e.imageSrc" alt="image" width="60"></td>
+          <td><img :src="e.imageName? e.imageSrc:'default.jpg'" alt="image" width="60"></td>
           <td>{{ e.name }}</td>
           <td>{{ e.price }}</td>
           <td>{{ e.trailer }}</td>

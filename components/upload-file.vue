@@ -65,6 +65,7 @@ export default {
           const reader = new FileReader();
           reader.onload = (x) => {
             this.moviesData.imageSrc = x.target.result;
+            this.keyUpload++;
             let formData = new FormData();
             formData.append("file", file);
 
@@ -87,6 +88,8 @@ export default {
           const reader = new FileReader();
           reader.onload = (x) => {
             this.moviesData.imageLogoSrc = x.target.result;
+            this.keyUpload++;
+
             let formData = new FormData();
             formData.append("file", file);
 
@@ -104,7 +107,6 @@ export default {
           reader.readAsDataURL(file);
         }
       }
-      this.keyUpload++;
     },
   },
 };

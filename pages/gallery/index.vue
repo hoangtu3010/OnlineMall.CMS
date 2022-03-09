@@ -46,16 +46,16 @@ export default {
   },
   computed: {
     listData() {
-      return this.$store.state.movies.listMovies;
+      return this.$store.state.movies.listData;
     },
   },
   methods: {
     getData() {
-      this.$store.dispatch("movies/getListMovies");
+      this.$store.dispatch("gallery/getListGallery");
     },
     removeMovies(id) {
       this.$store
-        .dispatch("movies/removeMovies", id)
+        .dispatch("gallery/removeGallery", id)
         .then((res) => {
           this.$toast.success("Delete Success");
         })

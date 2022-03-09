@@ -15,9 +15,6 @@
             required
           />
           <label class="form-label">Email</label>
-          <div class="invalid-feedback valid-custom">
-            Please enter your email.
-          </div>
         </div>
         <div class="form-group">
           <input
@@ -28,9 +25,6 @@
             required
           />
           <label class="form-label">Password</label>
-          <div class="invalid-feedback valid-custom">
-            Please enter your password.
-          </div>
         </div>
         <div class="form-group">
           <button @click="login" class="btn btn-primary">Login</button>
@@ -56,21 +50,17 @@ export default {
       },
     };
   },
-  created() {
-  },
+  created() {},
   methods: {
-    login() {
-      this.$store
-        .dispatch("authentication/login", this.userData)
-        .then((res) => {
-          // this.$auth.setToken('local', "Bearer " + res.data);
-          // this.$auth.setRefreshToken('local', res.request);
-          // this.$auth.setUserToken(res.data);
-          // console.log(res)
-        })
-        .catch(err => {
-          console.log(err)
+    async login() {
+      try {
+        let response = await this.$auth.loginWith("local", {
+          data: this.userData,
         });
+        console.log(response, 'response');
+      } catch (err) {
+        console.log(err, "error");
+      }
     },
   },
 };

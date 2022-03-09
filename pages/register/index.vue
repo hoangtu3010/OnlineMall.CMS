@@ -106,6 +106,8 @@ export default {
         .dispatch("admin/addUser", this.userData)
         .then((res) => {
           this.$toast.success("Account has been successfully registered");
+          this.$store.dispatch('authentication/login', this.userData.email, this.userData.password)
+          this.$router.push('/')
         })
         .catch((res) => {
           this.$toast.error("Account registration failed");

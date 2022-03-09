@@ -57,14 +57,12 @@ export default {
       this.$store
         .dispatch("gallery/removeGallery", id)
         .then((res) => {
+          this.getData()
           this.$toast.success("Delete Success");
         })
         .catch((res) => {
           this.$toast.error("Delete Failed");
         });
-      setTimeout(() => {
-        location.reload();
-      }, 200);
     },
   },
 };

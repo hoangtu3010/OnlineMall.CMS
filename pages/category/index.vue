@@ -52,6 +52,7 @@ export default {
       this.$store
         .dispatch("category/removeCategories", id)
         .then((res) => {
+          this.getData()
           this.$toast.success("Delete Success");
         })
         .catch((res) => {

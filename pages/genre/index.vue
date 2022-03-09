@@ -61,6 +61,7 @@ export default {
         .catch((res) => {
           this.$toast.error("Delete Failed");
         });
+      
     },
   },
 };

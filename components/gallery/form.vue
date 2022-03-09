@@ -8,7 +8,7 @@
     <div class="row" style="padding: 20px 0">
       <div class="col-lg-4">
         <div class="form-group">
-          <upload-file @done="saveFile" v-model="galleryData" />
+          <upload-file v-model="galleryData" :key="keyUpload" />
         </div>
       </div>
       <div class="col-lg-8">
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      keyUpload:0,
       galleryData: {
         id: 0,
         name: "",
@@ -67,18 +68,13 @@ export default {
           .dispatch("gallery/getDetailGallery", this.id)
           .then((res) => {
             this.galleryData = { ...res };
+            this.keyUpload++
           });
       } else {
         this.galleryData = {};
       }
     },
-    saveFile(file) {
-      if (file) {
-        this.galleryData.imageSrc = file.filePath;
-        this.galleryData.imageName = file.fileName;
-        console.log(this.galleryData);
-      }
-    },
+  
     addGallery() {
       this.$store
         .dispatch("gallery/addGallery", this.galleryData)

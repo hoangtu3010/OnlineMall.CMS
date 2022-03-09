@@ -92,6 +92,16 @@
                 </li>
                 <li class="nav-item">
                   <nuxt-link
+                    to="/category"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>Category</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link
                     to="/products"
                     class="nav-link nav-item-sidebar"
                     style="padding: 0.8rem 1rem"
@@ -140,16 +150,7 @@
                     <p>Gallery</p>
                   </nuxt-link>
                 </li>
-                <li class="nav-item">
-                  <nuxt-link
-                    to="/category"
-                    class="nav-link nav-item-sidebar"
-                    style="padding: 0.8rem 1rem"
-                  >
-                    <i class="nav-icon fas fa-tags"></i>
-                    <p>Category</p>
-                  </nuxt-link>
-                </li>
+                
                 <li class="nav-item">
                   <nuxt-link
                     to="/department"

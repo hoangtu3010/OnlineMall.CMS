@@ -96,6 +96,8 @@ const apiUrl = {
     CATEGORIES_DELETE: "/api/Categories/DeleteCategory/",
 
     /* Bookings */
-    BOOKINGS_GET_ALL: "/api/Bookings/GetBookings",
+    BOOKING_GET_ALL: "/api/Bookings/GetBookings",
+    BOOKING_GET_BY_ID:"/api/Bookings/GetBooking/",
+    BOOKING_DELETE:"/api/Bookings/DeleteBooking/",
 };
 export default apiUrl;

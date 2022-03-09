@@ -66,6 +66,7 @@ export default {
         .dispatch("movies/removeMovies", id)
         .then((res) => {
           this.$toast.success("Delete Success");
+          this.getData()
         })
         .catch((res) => {
           this.$toast.error("Delete Failed");

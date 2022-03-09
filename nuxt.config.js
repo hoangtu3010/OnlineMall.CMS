@@ -71,7 +71,11 @@ export default {
         "@nuxtjs/axios",
         "@nuxtjs/auth",
         "@nuxtjs/toast",
+        'nuxt-highcharts',
     ],
+    highcharts: {
+        exporting: true,
+    },
 
     bootstrapVue: {
         icons: true,

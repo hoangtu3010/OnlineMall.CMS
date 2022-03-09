@@ -92,6 +92,9 @@ export default {
     this.seatsData.column = 1
   },
   methods: {
+    getData() {
+      this.$store.dispatch("seats/getListSeats");
+    },
     getSeats() {
       if (this.id) {
         this.$store.dispatch("seats/getDetailSeats", this.id).then((res) => {
@@ -104,6 +107,7 @@ export default {
     addSeats() {
       this.$store.dispatch("seats/addSeats", this.seatsData).then(res => {
         this.$toast.success("Add Success")
+        this.getData()
       }).catch(res => {
         this.$toast.error('Add Failed')
       })
@@ -111,6 +115,7 @@ export default {
     updateSeats() {
       this.$store.dispatch("seats/updateSeats", this.seatsData).then(res => {
         this.$toast.success("Update Success")
+        this.getData()
       }).catch(res => {
         this.$toast.error('Update Failed')
       });

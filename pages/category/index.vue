@@ -22,9 +22,6 @@
             <nuxt-link :to="'/category/' + e.id" class="button-action btn-edit">
               <i class="fas fa-pen"></i>
             </nuxt-link>
-            <nuxt-link to="/category" class="button-action btn-details">
-              <i class="fas fa-eye"></i>
-            </nuxt-link>
             <nuxt-link to="/category" class="button-action btn-delete">
               <i @click="removeCategories(e.id)" class="fas fa-trash"></i>
             </nuxt-link>

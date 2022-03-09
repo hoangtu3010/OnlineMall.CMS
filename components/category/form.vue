@@ -62,6 +62,9 @@ export default {
     this.getCategories();
   },
   methods: {
+    getData() {
+      this.$store.dispatch("category/getListCategories");
+    },
     getCategories() {
       if (this.id) {
         this.$store
@@ -78,6 +81,7 @@ export default {
         .dispatch("category/addCategories", this.categoriesData)
         .then((res) => {
           this.$toast.success("Add Success");
+          this.getData()
         })
         .catch((res) => {
           this.$toast.error("Add Failed");
@@ -88,6 +92,7 @@ export default {
         .dispatch("category/updateCategories", this.categoriesData)
         .then((res) => {
           this.$toast.success("Update Success");
+          this.getData()
         })
         .catch((res) => {
           this.$toast.error("Update Failed");

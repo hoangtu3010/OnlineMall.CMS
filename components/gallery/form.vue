@@ -2,7 +2,7 @@
   <div class="form-horizontal">
     <div class="tag-header">
       <nuxt-link to="/gallery">Back to list</nuxt-link>
-      <h4>Add new movies</h4>
+      <h4>Add new Gallery</h4>
     </div>
     <hr />
     <div class="row" style="padding: 20px 0">

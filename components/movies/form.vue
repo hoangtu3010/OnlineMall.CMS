@@ -8,7 +8,7 @@
     <div class="row" style="padding: 20px 0">
       <div class="col-lg-4">
         <div class="form-group">
-          <upload-file @done="saveFile" v-model="moviesData"/>
+          <upload-file @done="saveFile" v-model="moviesData" :key="keyUpload"/>
         </div>
       </div>
       <div class="col-lg-8">
@@ -88,6 +88,7 @@ export default {
   },
   data() {
     return {
+      keyUpload:0,
       moviesData: {
         id: 0,
         name: "",
@@ -123,6 +124,7 @@ export default {
       if (this.id) {
         this.$store.dispatch("movies/getDetailMovies", this.id).then((res) => {
           this.moviesData = { ...res };
+          this.keyUpload++
         });
       } else {
         this.moviesData = {};

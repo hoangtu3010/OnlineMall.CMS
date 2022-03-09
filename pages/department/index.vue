@@ -64,9 +64,7 @@ export default {
         .catch((res) => {
           this.$toast.error("Delete Failed");
         });
-      setTimeout(() => {
-        location.reload();
-      }, 200);
+      
     },
   },
 };

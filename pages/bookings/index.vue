@@ -62,13 +62,12 @@ export default {
         .dispatch("bookings/removeBooking", id)
         .then((res) => {
           this.$toast.success("Delete Success");
+          this.getData()
         })
         .catch((res) => {
           this.$toast.error("Delete Failed");
         });
-      setTimeout(() => {
-        location.reload();
-      }, 200);
+      
     },
   },
 };

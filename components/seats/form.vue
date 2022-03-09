@@ -6,15 +6,14 @@
     </div>
     <hr />
     <div class="needs-validation" style="padding: 20px 0">
-      <div class="form-group">
-        <input
-          v-model="seatsData.name"
-          type="text"
-          class="form-control"
-          placeholder=" "
-        />
-        <label for="" class="form-label">Name</label>
-      </div>
+      <input
+        disabled
+        v-model="seatsData.name"
+        type="text"
+        class="form-control"
+        placeholder=" "
+        hidden
+      />
       <div class="form-group">
         <input
           v-model="seatsData.price"
@@ -25,33 +24,39 @@
         <label for="" class="form-label">Price</label>
       </div>
       <div class="form-group">
-        <b-form-select class="form-control" :options="rank" v-model="seatsData.rank">
+        <b-form-select
+          class="form-control"
+          :options="rank"
+          v-model="seatsData.rank"
+        >
         </b-form-select>
         <label for="" class="form-label">Rank</label>
       </div>
       <div class="form-group">
-        <b-form-select class="form-control" :options="rows" v-model="seatsData.row">
+        <b-form-select
+          class="form-control"
+          :options="rows"
+          v-model="seatsData.row"
+        >
         </b-form-select>
         <label for="" class="form-label">Row</label>
       </div>
       <div class="form-group">
-        <b-form-select class="form-control" :options="columns" v-model="seatsData.column">
+        <b-form-select
+          class="form-control"
+          :options="columns"
+          v-model="seatsData.column"
+        >
         </b-form-select>
         <label for="" class="form-label">Column</label>
       </div>
       <div class="form-group">
         <div class="button-form">
           <nuxt-link to="/seats">
-            <button
-              @click="updateSeats"
-              v-if="this.id"
-              class="btn"
-            >
+            <button @click="updateSeats" v-if="this.id" class="btn">
               Save
             </button>
-            <button @click="addSeats" v-if="!this.id" class="btn">
-              Add
-            </button>
+            <button @click="addSeats" v-if="!this.id" class="btn">Add</button>
           </nuxt-link>
         </div>
       </div>
@@ -60,7 +65,7 @@
 </template>
 
 <script>
-import common from '@/constants/common.js'
+import common from "@/constants/common.js";
 
 export default {
   props: {
@@ -75,25 +80,36 @@ export default {
         id: 0,
         name: "",
         price: 0,
-        rank: 'normal',
+        rank: "normal",
         column: 1,
-        row: 1
+        row: 1,
       },
       rank: common.CINEMA_RANKS,
       columns: common.CINEMA_COLUMNS,
-      rows: common.CINEMA_ROWS
+      rows: common.CINEMA_ROWS,
     };
   },
   mounted() {},
   created() {
     this.getSeats();
-    this.seatsData.rank = 'normal'
-    this.seatsData.row = 1
-    this.seatsData.column = 1
+    this.seatsData.rank = "normal";
+    this.seatsData.row = 1;
+    this.seatsData.column = 1;
+  },
+  computed: {
+  
   },
   methods: {
-    getData() {
-      this.$store.dispatch("seats/getListSeats");
+    seatName() {
+      var rowTxt = this.rows.find((x) => x.value === this.seatsData.row).text;
+      var colTxt = this.columns.find(
+        (x) => x.value === this.seatsData.column
+      ).text;
+      var rowSplit = rowTxt.split(" ");
+      var colSplit = colTxt.split(" ");
+      return this.seatsData.name = (
+        "Seat " + colSplit[colSplit.length - 1] + rowSplit[rowSplit.length - 1]
+      );
     },
     getSeats() {
       if (this.id) {
@@ -105,20 +121,25 @@ export default {
       }
     },
     addSeats() {
-      this.$store.dispatch("seats/addSeats", this.seatsData).then(res => {
-        this.$toast.success("Add Success")
-        this.getData()
-      }).catch(res => {
-        this.$toast.error('Add Failed')
-      })
+      this.seatsData.name = this.seatName()
+      this.$store
+        .dispatch("seats/addSeats", this.seatsData)
+        .then((res) => {
+          this.$toast.success("Add Success");
+        })
+        .catch((res) => {
+          this.$toast.error("Add Failed");
+        });
     },
     updateSeats() {
-      this.$store.dispatch("seats/updateSeats", this.seatsData).then(res => {
-        this.$toast.success("Update Success")
-        this.getData()
-      }).catch(res => {
-        this.$toast.error('Update Failed')
-      });
+      this.$store
+        .dispatch("seats/updateSeats", this.seatsData)
+        .then((res) => {
+          this.$toast.success("Update Success");
+        })
+        .catch((res) => {
+          this.$toast.error("Update Failed");
+        });
     },
   },
 };

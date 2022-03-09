@@ -13,8 +13,8 @@
           <th>Name</th>
           <th>Price</th>
           <th>Rank</th>
+          <th>Columns</th>
           <th>Row</th>
-          <th>Colums</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>

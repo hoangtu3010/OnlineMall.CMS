@@ -55,6 +55,7 @@ export default {
       this.$store
         .dispatch("genre/removeGenre", id)
         .then((res) => {
+          this.getData()
           this.$toast.success("Delete Success");
         })
         .catch((res) => {

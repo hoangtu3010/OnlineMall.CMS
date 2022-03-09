@@ -62,6 +62,7 @@ export default {
       this.$store
         .dispatch("movieToday/removeMovieToday", id)
         .then((res) => {
+          this.getData()
           this.$toast.success("Delete Success");
         })
         .catch((res) => {

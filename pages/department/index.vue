@@ -59,6 +59,7 @@ export default {
       this.$store
         .dispatch("department/removeDepartment", id)
         .then((res) => {
+          this.getData()
           this.$toast.success("Delete Success");
         })
         .catch((res) => {

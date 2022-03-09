@@ -1,6 +1,8 @@
 const apiUrl = {
     /* Authentication */
     AUTH_LOGIN: "/api/AuthManagerment/Login",
+    AUTH_REGISTER: "/api/AuthManagerment/Register",
+    AUTH_USER: "/api/AuthManagerment/GetCurrentUser",
 
     /* Upload File */
     UPLOAD_FILE: "/api/UploadFile/SaveImage",

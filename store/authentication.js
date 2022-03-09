@@ -14,7 +14,7 @@ export default {
         return this.$axios
           .post(apiUrl.AUTH_LOGIN, data)
           .then((res) => {
-            console.log(res)
+            console.log(res, 'ressssssssssssss')
             return resolve(res);
           })
           .catch((err) => {

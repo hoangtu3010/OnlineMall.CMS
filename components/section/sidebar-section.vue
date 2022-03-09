@@ -75,10 +75,10 @@
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
-                  <a href="/bookings" class="nav-link nav-item-sidebar">
+                  <nuxt-link to="/bookings" class="nav-link nav-item-sidebar">
                     <i class="nav-icon ion-ios-bookmarks"></i>
                     <p>Bookings</p>
-                  </a>
+                  </nuxt-link>
                 </li>
                 <li class="nav-item">
                   <nuxt-link

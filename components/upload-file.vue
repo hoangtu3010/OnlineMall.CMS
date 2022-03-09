@@ -60,7 +60,7 @@ export default {
   methods: {
     uploadFile(event) {
       if (this.textStr === "") {
-        if (event.target.files && event.target.files[0]) {
+       if (event.target.files && event.target.files[0]) {
           let file = event.target.files[0];
           const reader = new FileReader();
           reader.onload = (x) => {
@@ -80,7 +80,7 @@ export default {
           };
 
           reader.readAsDataURL(file);
-        }
+         }
       } else {
         if (event.target.files && event.target.files[0]) {
           let file = event.target.files[0];

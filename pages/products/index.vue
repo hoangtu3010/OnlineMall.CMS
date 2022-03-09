@@ -49,7 +49,7 @@
 export default {
   created() {
     this.getData();
-    console.log(this.listData)
+    console.log(this.listData);
   },
   data() {
     return {};

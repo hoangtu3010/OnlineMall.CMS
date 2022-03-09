@@ -8,7 +8,7 @@
     <div class="row" style="padding: 20px 0">
       <div class="col-lg-4">
         <div class="form-group">
-          <upload-file v-model="moviesData"/>
+          <upload-file @done="saveFile" v-model="moviesData"/>
         </div>
       </div>
       <div class="col-lg-8">
@@ -126,6 +126,12 @@ export default {
         });
       } else {
         this.moviesData = {};
+      }
+    },saveFile(file){
+      if(file){
+        this.moviesData.imageSrc=file.filePath
+        this.moviesData.imageName=file.fileName
+        console.log(this.moviesData)
       }
     },
     addMovies() {

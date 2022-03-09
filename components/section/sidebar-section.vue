@@ -75,10 +75,10 @@
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
-                  <a href="/bookings" class="nav-link nav-item-sidebar">
+                  <nuxt-link to="/bookings" class="nav-link nav-item-sidebar">
                     <i class="nav-icon ion-ios-bookmarks"></i>
                     <p>Bookings</p>
-                  </a>
+                  </nuxt-link>
                 </li>
                 <li class="nav-item">
                   <nuxt-link
@@ -131,6 +131,16 @@
                   </nuxt-link>
                 </li>
                 <li class="nav-item">
+                  <nuxt-link
+                    to="/gallery"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>Gallery</p>
+                  </nuxt-link>
+                </li>
+                  <li class="nav-item">
                   <nuxt-link
                     to="/category"
                     class="nav-link nav-item-sidebar"

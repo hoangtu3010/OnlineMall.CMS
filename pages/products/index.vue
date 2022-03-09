@@ -25,7 +25,8 @@
           <td>{{ e.name }}</td>
           <td>{{ e.price }}</td>
           <td>{{ e.description }}</td>
-          <td>{{ e.image }}</td>
+          <td><img :src="e.imageSrc" alt="image" width="60" /></td>
+
           <td>{{ e.category.name }}</td>
 
           <td class="text-center">
@@ -49,7 +50,7 @@
 export default {
   created() {
     this.getData();
-    console.log(this.listData)
+    console.log(this.listData);
   },
   data() {
     return {};

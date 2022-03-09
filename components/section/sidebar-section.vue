@@ -132,6 +132,16 @@
                 </li>
                 <li class="nav-item">
                   <nuxt-link
+                    to="/gallery"
+                    class="nav-link nav-item-sidebar"
+                    style="padding: 0.8rem 1rem"
+                  >
+                    <i class="nav-icon fas fa-book-medical"></i>
+                    <p>Gallery</p>
+                  </nuxt-link>
+                </li>
+                <li class="nav-item">
+                  <nuxt-link
                     to="/category"
                     class="nav-link nav-item-sidebar"
                     style="padding: 0.8rem 1rem"

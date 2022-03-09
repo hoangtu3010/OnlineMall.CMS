@@ -36,11 +36,11 @@
 
           <td class="text-center">
             <nuxt-link :to="'/shops/'+e.id" class="button-action btn-edit">
-              <i @click="editUser(e.id)" class="fas fa-pen"></i>
+              <i  class="fas fa-pen"></i>
             </nuxt-link>
          
-            <nuxt-link  to="/department" class="button-action btn-delete">
-              <i @click="deleteUser(e.id)" class="fas fa-trash"></i>
+            <nuxt-link  to="/shops" class="button-action btn-delete">
+              <i @click="deleteProducts(e.id)" class="fas fa-trash"></i>
             </nuxt-link>
           </td>
         </tr>
@@ -72,13 +72,14 @@ export default {
         .dispatch("shops/removeShops", id)
         .then((res) => {
           this.$toast.success("Delete Success");
+          this.getData()
         })
         .catch((res) => {
           this.$toast.error("Delete Failed");
         });
-      setTimeout(() => {
-        location.reload();
-      }, 200);
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 200);
     },
   }
 

@@ -2,13 +2,13 @@
   <div class="form-horizontal">
     <div class="tag-header">
       <nuxt-link to="/shops">Back to list</nuxt-link>
-      <h4><span v-if="!id">Add new shop</span><span v-else>Edit shop</span> </h4>
+      <h4><span v-if="!id">Add new shop</span><span v-else>Edit shop</span></h4>
     </div>
     <hr />
     <div class="row" style="padding: 20px 0">
       <div class="col-lg-4">
         <div class="form-group">
-          <upload-file v-model="shopData"/>
+          <upload-file v-model="shopData" :key="keyUpload" />
           <label for="" class="form-label">Image</label>
         </div>
       </div>
@@ -22,8 +22,12 @@
           />
           <label for="" class="form-label">Name</label>
         </div>
-         <div class="form-group col-md-2">
-          <upload-file textStr="Logo" v-model="shopData"/>
+        <div class="form-group col-md-2">
+          <upload-file
+            textStr="imageLogoName"
+            :key="keyUpload"
+            v-model="shopData"
+          />
           <label for="" class="form-label">Logo</label>
         </div>
         <div class="form-group">
@@ -42,7 +46,9 @@
             class="form-control"
             placeholder=" "
           />
-          <label for="" class="form-label">ShowTime{{moment(shopData.showTime,"HH:mm").toDate()}}</label>
+          <label for="" class="form-label"
+            >ShowTime</label
+          >
         </div>
         <div class="form-group">
           <input
@@ -76,15 +82,15 @@
         </div>
       </div>
       <div class="button-form">
-          <button @click="updateShop" v-if="this.id" class="btn">Save</button>
-          <button @click="addShop" v-if="!this.id" class="btn">Add</button>
+        <button @click="updateShop" v-if="this.id" class="btn">Save</button>
+        <button @click="addShop" v-if="!this.id" class="btn">Add</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 export default {
   props: {
     id: {
@@ -94,6 +100,7 @@ export default {
   },
   data() {
     return {
+      keyUpload: 0,
       shopData: {
         id: 0,
         name: "",
@@ -107,19 +114,18 @@ export default {
       },
     };
   },
-  mounted() {
-  },
+  mounted() {},
   created() {
     this.getShop();
     this.getDepartment();
   },
   watch: {
-      shopData:{
-          handler(val){
-              console.log(val)
-          },
-          deep:true
-      }
+    shopData: {
+      handler(val) {
+        console.log(val);
+      },
+      deep: true,
+    },
   },
   computed: {
     departmentData() {
@@ -135,6 +141,7 @@ export default {
       if (this.id) {
         this.$store.dispatch("shops/getDetailShops", this.id).then((res) => {
           this.shopData = { ...res };
+          this.keyUpload++;
         });
       } else {
         this.shopData = {};
@@ -144,19 +151,19 @@ export default {
       this.$store
         .dispatch("shops/addShops", this.shopData)
         .then((res) => {
-          this.$router.push('/shops')
+          this.$router.push("/shops");
           this.$toast.success("Add Success");
         })
         .catch((res) => {
           this.$toast.error("Add Failed");
         });
-      console.log(this.shopData)
+      console.log(this.shopData);
     },
     updateShop() {
       this.$store
         .dispatch("shops/updateShops", this.shopData)
         .then((res) => {
-          this.$router.push('/shops')
+          this.$router.push("/shops");
           this.$toast.success("Update Success");
         })
         .catch((res) => {

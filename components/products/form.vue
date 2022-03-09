@@ -8,7 +8,7 @@
     <div class="row" style="padding: 20px 0">
       <div class="col-lg-4">
         <div class="form-group">
-          <upload-file v-model="productData"/>
+          <upload-file v-model="productData" :key="keyItem"/>
         </div>
       </div>
       <div class="col-lg-8">
@@ -59,7 +59,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -70,12 +69,12 @@ export default {
   },
   data() {
     return {
+      keyItem:0,
       productData: {
         id: 0,
         name: "",
         price: 0,
         imageName: "",
-        imageFile: "",
         imageSrc: "",
         description: "",
         categoryId: 1,
@@ -102,6 +101,7 @@ export default {
       if (this.id) {
         this.$store.dispatch("products/getDetailProducts", this.id).then((res) => {
           this.productData = { ...res };
+          this.keyItem++
         });
       } 
     },

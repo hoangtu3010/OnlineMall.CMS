@@ -31,7 +31,7 @@
 
           <td class="text-center">
             <nuxt-link :to="'/products/' + e.id" class="button-action btn-edit">
-              <i @click="editUser(e.id)" class="fas fa-pen"></i>
+              <i  class="fas fa-pen"></i>
             </nuxt-link>
             <nuxt-link to="/admin/" class="button-action btn-details">
               <i class="fas fa-eye"></i>
